@@ -2,13 +2,15 @@
 
 import sys
 import random
-randsource = random.SystemRandom() # nondeterministic random source
+
+randsource = random.SystemRandom()  # nondeterministic random source
 
 iterations = int(sys.argv[1])  # Number of throws
-number_of_dice = int(sys.argv[2])   # Number of dice each throw
+number_of_dice = int(sys.argv[2])  # Number of dice each throw
+
 
 def unfair_roll():
-    r = randsource.randint(1,123)
+    r = randsource.randint(1, 123)
     if r < 64:
         return 1
     if r < 96:
@@ -21,20 +23,20 @@ def unfair_roll():
         return 5
     return 6
 
-bins = [0 for _ in range((number_of_dice*6)+3)]  # Roll the dice
+
+bins = [0 for _ in range((number_of_dice * 6) + 3)]  # Roll the dice
 for i in range(iterations):
-    throw=0
+    throw = 0
     for j in range(number_of_dice):
         throw = throw + unfair_roll()
-    bins[throw] +=1
-    
-print("x y") # Print the header
+    bins[throw] += 1
 
-max=0           # Find the maximum so we can normalize it
+print("x y")  # Print the header
+
+max = 0  # Find the maximum so we can normalize it
 for f in bins:
     if f > max:
         max = f
 
-for i in range(0,(6*number_of_dice)+3): #Print out the histogram
-    print("%d %f" % (i, float(bins[i])/float(max)))     
-    
+for i in range(0, (6 * number_of_dice) + 3):  # Print out the histogram
+    print("%d %f" % (i, float(bins[i]) / float(max)))

@@ -20,22 +20,22 @@ for round in range(10):
         k1 = k1 >> 1
         k2 = k2 >> 1
 
-    #insert bias
+    # insert bias
     for i in range(n):
-        if (x[i] == 1) and (random.randint(0,100) > 60):
+        if (x[i] == 1) and (random.randint(0, 100) > 60):
             x[i] = 0
-        if (y[i] == 1) and (random.randint(0,100) > 60):
+        if (y[i] == 1) and (random.randint(0, 100) > 60):
             y[i] = 0
 
-    # insert correlation
-        if (x[i] != y[i]) and (random.randint(0,100) > 90):
-            if random.choice((True,False)):
+        # insert correlation
+        if (x[i] != y[i]) and (random.randint(0, 100) > 90):
+            if random.choice((True, False)):
                 x[i] = y[i]
             else:
                 y[i] = x[i]
 
     ## center the data
-    #for i in range(n):
+    # for i in range(n):
     #    if x[i] == 0:
     #        x[i] = -1
     #    if y[i] == 0:
@@ -50,15 +50,15 @@ for round in range(10):
     sumyi2 = 0
 
     for i in range(n):
-        sumxiyi += x[i]*y[i]
-        sumxi   += x[i]
-        sumyi   += y[i]
-        sumxi2  += x[i]*x[i]
-        sumyi2  += y[i]*y[i]
+        sumxiyi += x[i] * y[i]
+        sumxi += x[i]
+        sumyi += y[i]
+        sumxi2 += x[i] * x[i]
+        sumyi2 += y[i] * y[i]
 
-    top = (n*sumxiyi) - (sumxi*sumyi)
-    bottom = (n*sumxi2 - (sumxi*sumxi))*((n*sumyi2)- (sumyi*sumyi))
-    c_cc = float(top)/math.sqrt(float(bottom))
+    top = (n * sumxiyi) - (sumxi * sumyi)
+    bottom = (n * sumxi2 - (sumxi * sumxi)) * ((n * sumyi2) - (sumyi * sumyi))
+    c_cc = float(top) / math.sqrt(float(bottom))
 
     # Pearsons Phi
     n11 = 0
@@ -79,7 +79,7 @@ for round in range(10):
             n01 += 1
         if x[i] != 1 and y[i] != 1:
             n00 += 1
-       
+
         if y[i] == 1:
             y1 += 1
         if y[i] != 1:
@@ -89,20 +89,22 @@ for round in range(10):
         if x[i] != 1:
             x0 += 1
 
-    top = n11 * n00 - n10*n01
-    bottom = math.sqrt(float(y1*y0*x1*x0))
-    c_pp = float(top)/bottom
+    top = n11 * n00 - n10 * n01
+    bottom = math.sqrt(float(y1 * y0 * x1 * x0))
+    c_pp = float(top) / bottom
 
     # compute the means
-    x_mean = float(x1)/float(n)
-    y_mean = float(y1)/float(n)
+    x_mean = float(x1) / float(n)
+    y_mean = float(y1) / float(n)
     # Do it the other way
     aeqb = 0
     for i in range(n):
         if x[i] == y[i]:
             aeqb += 1
-    prob = float(aeqb)/float(n)
-    c_aeqb = (prob*2.0) - 1.0
+    prob = float(aeqb) / float(n)
+    c_aeqb = (prob * 2.0) - 1.0
 
-    print("%1.6f            %1.6f      %1.6f             %1.6f %1.6f" % (c_cc,c_pp,c_aeqb, x_mean, y_mean))
-
+    print(
+        "%1.6f            %1.6f      %1.6f             %1.6f %1.6f"
+        % (c_cc, c_pp, c_aeqb, x_mean, y_mean)
+    )

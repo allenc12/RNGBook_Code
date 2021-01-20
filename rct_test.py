@@ -5,7 +5,7 @@ import math
 import sys
 
 # Read data.
-def read_binary_file(symbol_size,filename):
+def read_binary_file(symbol_size, filename):
     bits = list()
     symbols = list()
     with open(filename, "rb") as thefile:
@@ -14,16 +14,18 @@ def read_binary_file(symbol_size,filename):
             if block:
                 for thebyte in block:
                     for i in range(8):
-                        thebit = (((ord(thebyte) << i) & 0x80) >> 7)
+                        thebit = ((ord(thebyte) << i) & 0x80) >> 7
                         bits.append(thebit)
-                symbolcount = int(math.floor(len(bits)/symbol_size))
+                symbolcount = int(math.floor(len(bits) / symbol_size))
                 for symbolnum in range(symbolcount):
-                    symbolbits = bits[symbolnum*symbol_size:(symbolnum+1)*symbol_size]
+                    symbolbits = bits[
+                        symbolnum * symbol_size : (symbolnum + 1) * symbol_size
+                    ]
                     symbol = 0
                     for bit in symbolbits:
-                        symbol = (symbol << 1)+bit
+                        symbol = (symbol << 1) + bit
                     symbols.append(symbol)
-                bits = bits[(symbol_size*symbolcount):] # Save leftover bits
+                bits = bits[(symbol_size * symbolcount) :]  # Save leftover bits
                 for symbol in symbols:
                     yield symbol
             else:
@@ -35,18 +37,18 @@ H = float(sys.argv[2])
 symbol_size = int(sys.argv[3])
 filename = str(sys.argv[4])
 
-f = read_binary_file(symbol_size,filename)
+f = read_binary_file(symbol_size, filename)
 
 A = next(f)
 B = 1
 errors = 0
-maxcount = 10**7
+maxcount = 10 ** 7
 
-C = int(math.ceil((W/H) + 1.0))
-print("W =",W)
-print("H =",H)
-print("Symbol Size =",symbol_size) 
-print("C =",C)
+C = int(math.ceil((W / H) + 1.0))
+print("W =", W)
+print("H =", H)
+print("Symbol Size =", symbol_size)
+print("C =", C)
 
 count = 0
 for X in f:
@@ -60,6 +62,7 @@ for X in f:
         B = 1
     A = X
 
-print("Errors %d  Count = %d rate = %f as_a_power_of_2 = %f  " % \
-  (errors,count, (count/errors), math.log((count/errors),2)))
-
+print(
+    "Errors %d  Count = %d rate = %f as_a_power_of_2 = %f  "
+    % (errors, count, (count / errors), math.log((count / errors), 2))
+)

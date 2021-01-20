@@ -9,8 +9,8 @@ import sys
 filename = sys.argv[1]
 key = sys.argv[2]
 
-with open(filename,"rb") as f:
-    bytes = f.read(128) # Read 1024 bits
+with open(filename, "rb") as f:
+    bytes = f.read(128)  # Read 1024 bits
     while len(bytes) == 128:
         digest = hmac.new(key, msg=bytes, digestmod=hashlib.sha256).digest()
         astr = ""
@@ -19,4 +19,3 @@ with open(filename,"rb") as f:
         print(astr)
         bytes = f.read(128)
 f.close()
-

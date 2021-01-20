@@ -6,8 +6,6 @@ bits = "110011000001010101101100010011001110000000000010010011010101000100010011
 thing = list()
 for ch in bits:
     thing.append(ch)
-    
-that = ','.join(thing)
-print(that)
 
-    
+that = ",".join(thing)
+print(that)

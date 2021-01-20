@@ -5,17 +5,18 @@ import numpy
 import cmath
 import random
 
-# Compute Correlogram with the Wiener-Khninchin theorem 
+# Compute Correlogram with the Wiener-Khninchin theorem
 #   Fr(f) = FFT[X(t)]
 #   S(f) = Fr(f)Fr*(f)  // times its complex conugate
 #   R(tau) = IFFT[S(f)]
 
+
 def wiener_khninchin(bits):
     n = len(bits)
-    if (n % 2) == 1:        # Make it an even number
+    if (n % 2) == 1:  # Make it an even number
         raise ValueError("The number of data samples must be even")
 
-    ts = list()             # Convert to +1,-1
+    ts = list()  # Convert to +1,-1
     for bit in bits:
         if bit == 0:
             ts.append(-1.0)
@@ -24,12 +25,12 @@ def wiener_khninchin(bits):
 
     ts_np = numpy.array(ts)
     fs = numpy.fft.fft(ts_np)  # Compute DFT
-   
+
     # Muliply each element by its complex conjugate
     fs_out = list()
     for x in range(len(fs)):
         theconjugate = fs[x].conjugate()
-        newvalue = fs[x]*theconjugate
+        newvalue = fs[x] * theconjugate
         fs_out.append(newvalue)
     np_fs_out = numpy.array(fs_out)
 
@@ -38,8 +39,8 @@ def wiener_khninchin(bits):
 
     # Turn it into a list of reals
     corellogram = list()
-    for x in  crg:
-        corellogram.append(x.real/n)
+    for x in crg:
+        corellogram.append(x.real / n)
 
     return corellogram
 
@@ -54,17 +55,16 @@ for i in range(256):
     else:
         level = 0.8
     ref = r.random()
-    if (ref > level):
+    if ref > level:
         newbit = 1
     else:
         newbit = 0
     previous = newbit
     bits.append(newbit)
 
-c = wiener_khninchin(bits) # Compute the correllogram
+c = wiener_khninchin(bits)  # Compute the correllogram
 
-print("bits:",bits)
+print("bits:", bits)
 print()
 for i in range(32):
-    print("%02d  %06f" % (i,c[i]))
- 
+    print("%02d  %06f" % (i, c[i]))

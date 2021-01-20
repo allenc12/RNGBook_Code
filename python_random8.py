@@ -8,4 +8,3 @@ for i in range(5):
 print()
 for i in range(5):
     print("%032X" % r.getrandbits(256))
-

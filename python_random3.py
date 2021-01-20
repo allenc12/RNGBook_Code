@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
 import random
+
 r = random
 
-x = [r.randint(10,15)  for y in range(20)]
+x = [r.randint(10, 15) for y in range(20)]
 print(x)
- 
-    
