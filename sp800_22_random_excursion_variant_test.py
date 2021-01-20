@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # sp800_22_random_excursion_variant_test.py
 # 

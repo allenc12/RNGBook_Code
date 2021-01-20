@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from scipy.special import gamma, gammainc, gammaincc
 from scipy.special import gammaincc

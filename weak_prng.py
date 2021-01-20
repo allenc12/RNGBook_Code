@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # A weak RNG with only 16 bit keys
 from Crypto.Cipher import AES

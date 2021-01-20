@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python32
 
 import matplotlib
 import matplotlib.pyplot as plt

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # sp800_22_overlapping_template_mathcing_test.py
 # 

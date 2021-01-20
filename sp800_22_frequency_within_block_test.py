@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # sp800_22_frequency_within_block_test.pylon
 # 

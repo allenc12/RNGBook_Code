@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # sp800_22_longest_run_ones_in_a_block_test.pylon
 #

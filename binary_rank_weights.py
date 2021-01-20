@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 
 print("M   Q   Pi_1           Pi_2           Pi_3")

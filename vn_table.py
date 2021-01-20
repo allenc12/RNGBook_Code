@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 count_table = [0 for x in range(256)]
 pattern_table = [0 for x in range(256)]
