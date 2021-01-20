@@ -9,7 +9,7 @@ def binary_lagn(bits,n):
     equal_count = 0
     notequal_count = 0 
     count = len(bits)
-    for i in xrange(count):
+    for i in range(count):
         if bits[(i+n) % count]==bits[i]:
             equal_count += 1
         else:
@@ -34,7 +34,7 @@ def read_binary_file(filename):
             block = thefile.read(4096)
             if block:
                 for thebyte in block:
-                    for i in xrange(8):
+                    for i in range(8):
                         thebit = (((ord(thebyte) << i) & 0x80) >> 7)
                         bits.append(thebit)
             else:
@@ -43,9 +43,9 @@ def read_binary_file(filename):
 filename = sys.argv[1]
 bits = read_binary_file(filename)
 
-print "#n    lag-n probequal"
-for i in xrange(16):
+print("#n    lag-n probequal")
+for i in range(16):
     lagn,prob_eq = binary_lagn(bits,i)
     lagn2 = 2.0*(prob_eq-0.5)
-    print "%d  %0.5f  %0.5f %0.5f" % (i, lagn,prob_eq,lagn2)
+    print("%d  %0.5f  %0.5f %0.5f" % (i, lagn,prob_eq,lagn2))
     

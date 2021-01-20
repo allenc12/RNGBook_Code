@@ -31,10 +31,10 @@ def zignorinit(ic, dr, dv):
     adzig_x[1] = dr
     adzig_x[ic] = 0
 
-    for i in xrange(2,ic):
+    for i in range(2,ic):
         adzig_x[i] = math.sqrt(-2.0 * math.log(dv/adzig_x[i-1] +f))
         f = math.exp(-0.5 * (adzig_x[i]**2))
-    for i in xrange(ic):
+    for i in range(ic):
         adzig_r[i] = adzig_x[i+1]/adzig_x[i]
 
 def zignor():
@@ -60,6 +60,6 @@ def zignor():
 
 zignorinit(zignor_c,zignor_r,zignor_v)
 
-for i in xrange(num):
-    print zignor()
+for i in range(num):
+    print(zignor())
 

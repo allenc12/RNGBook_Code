@@ -38,8 +38,8 @@ def monobit_test(bits):
     
     zeroes,ones = count_ones_zeroes(bits)
     s = abs(ones-zeroes)
-    print "  Ones count   = %d" % ones
-    print "  Zeroes count = %d" % zeroes
+    print("  Ones count   = %d" % ones)
+    print("  Zeroes count = %d" % zeroes)
     
     p = math.erfc(float(s)/(math.sqrt(float(n)) * math.sqrt(2.0)))
     

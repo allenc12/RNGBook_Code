@@ -12,11 +12,11 @@ def rand_range(maxrand):
 
 histogram = [0 for x in range(16)]
 
-for i in xrange(1000000):
+for i in range(1000000):
     result = rand_range(11)
     histogram[result] = histogram[result]+1
 
 print("Histogram")
-for i in xrange(16):
-    print("value : %2d  frequency %d" % (i,histogram[i]))
+for i in range(16):
+    print(("value : %2d  frequency %d" % (i,histogram[i])))
  

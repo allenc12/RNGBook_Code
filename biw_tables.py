@@ -8,7 +8,7 @@ def non_random_table(size, type="add"):
     header.append("  ")
     
     # The Header
-    for i in xrange(size):
+    for i in range(size):
         header.append("%02d" % (i))
 
     # The list of lists. Each list a row.
@@ -16,14 +16,14 @@ def non_random_table(size, type="add"):
     # bodyy is a list of lists of bodyx.
 
     bodyy=list()
-    for i in xrange(size):
+    for i in range(size):
         bodyx = list()
         bodyx.append("%02d" % (i)) # The row index
         bodyy.append(bodyx)
 
     # Fill in the rows
-    for y in xrange(size):
-        for x in xrange(size):
+    for y in range(size):
+        for x in range(size):
             #bodyy[y].append(nonrandomfunction(x,y,size))
             if type=="add":
                 bodyy[y].append("%02d" % (x+y))
@@ -43,14 +43,14 @@ def non_random_table(size, type="add"):
     return tabletext
 
 table = non_random_table(10,"add")
-print table
+print(table)
 
 
 table = non_random_table(10,"multiply")
-print table
+print(table)
 
 table = non_random_table(10,"random")
-print table
+print(table)
 
-print
+print()
 

@@ -4,7 +4,7 @@ import sys
 
 tries = int(sys.argv[1])
 
-N = range(tries)
+N = list(range(tries))
 
 def isprime(n):
     """Returns True if n is prime."""
@@ -35,6 +35,6 @@ for i in N:
     x = ((i*i)-i)+41
     if isprime(x):
         cnt += 1
-    print str(i).ljust(4),": ",str(x).ljust(5),"   ",str(isprime(x))
+    print(str(i).ljust(4),": ",str(x).ljust(5),"   ",str(isprime(x)))
     
-print str(cnt),"/",str(tries)
+print(str(cnt),"/",str(tries))

@@ -535,7 +535,7 @@ def gmul(a, b, degree=8):
             r = b
         else:
             r = 0
-        for i in xrange(1,degree+1):
+        for i in range(1,degree+1):
             if  (b & (1 << (degree-1))) == 0:
                 b = z ^ ((b << 1) & ((1 << degree) - 1))
             else:
@@ -551,7 +551,7 @@ def gadd(a, b):
 
 def gpower(a, power, degree=8):
     result = a
-    for i in xrange(power-1):
+    for i in range(power-1):
         result = gmul(a,result)
     return result
     
@@ -636,10 +636,10 @@ def gf2_matrix_mul(a,b):
 
     #print "Left = %d x %d,  right = %d x %d" % (left_columns,left_rows,right_columns,right_rows)
     # Fill in the result matrix
-    for i in xrange(len(a)):
-        for j in xrange(len(b[0])):
+    for i in range(len(a)):
+        for j in range(len(b[0])):
             total = 0
-            for k in xrange(left_columns):
+            for k in range(left_columns):
                 #print " i j k %d %d %d " % (i,j,k)
                 aa = a[i][k]
                 bb = b[k][j]
@@ -659,7 +659,7 @@ def gf2_matrix_power(a,power):
         return result
     else:
         result = deepcopy(a)
-        for i in xrange(power-1):
+        for i in range(power-1):
             result = gf2_matrix_mul(a,result)
         return result
     
@@ -667,7 +667,7 @@ def gf2_matrix_power(a,power):
 # Compute inner product of AiX (called z) and input seed y
 def inner_product(y,z):
     ip = 0
-    for i in xrange(len(y[0])):    
+    for i in range(len(y[0])):    
          ip = gf2add(ip,gf2mul(y[0][i],z[i][0]))
     return ip
 
@@ -677,9 +677,9 @@ def inner_product(y,z):
 def make_random_square_full_rank_matrix(size=8):
     while True:
         a = list()
-        for i in xrange(size):
+        for i in range(size):
             row = list()
-            for j in xrange(size):
+            for j in range(size):
                 number = random.SystemRandom().randrange(0,2)
                 row.append(number)
             a.append(row[:])
@@ -692,11 +692,11 @@ def make_random_square_full_rank_matrix(size=8):
 # Oh my God! It's full of zeroes! But it's not square!
 def make_empty_nxm_matrix(rows=3,columns=5):
     row = list()
-    for i in xrange(columns):
+    for i in range(columns):
         row.append(0)
         
     mah_matriks = list()
-    for i in xrange(rows):
+    for i in range(rows):
         mah_matriks.append(deepcopy(row))
      
     return mah_matriks
@@ -708,16 +708,16 @@ def make_empty_square_matrix(size=8):
     
 def make_identity_matrix(size=8):
     matrix = make_empty_square_matrix(size=size)
-    for i in xrange(size):
+    for i in range(size):
         matrix[i][i] = 1
     return matrix
 
 def rotate_right_matrix(matrix):
     size = len(matrix)
-    temp = [matrix[x][size-1] for x in xrange(size)]
+    temp = [matrix[x][size-1] for x in range(size)]
     
-    for i in xrange(size):
-        for j in xrange(size-1,-1,-1):
+    for i in range(size):
+        for j in range(size-1,-1,-1):
             if j == 0:
                 matrix[i][j] = temp[i]  # wrap around
             else:
@@ -743,8 +743,8 @@ def matrix2str(matrix):
 def val2matrix(val,size=8):
     matrix = make_empty_square_matrix(size=size)
     iteration = 0
-    for i in xrange(size):
-        for j in xrange(size):
+    for i in range(size):
+        for j in range(size):
             bit = (val >> iteration) & 0x1
             iteration = iteration +1
             matrix[i][j] = bit
@@ -753,7 +753,7 @@ def val2matrix(val,size=8):
 #convert an element to a column bit vector
 def element2column(val,size=8):
     matrix = make_empty_nxm_matrix(rows=size,columns=1)
-    for i in xrange(size):
+    for i in range(size):
         bit = (val >> i) & 0x1
         matrix[size-i-1][0] = bit
     return matrix
@@ -761,7 +761,7 @@ def element2column(val,size=8):
 #convert an element to a column bit vector
 def column2element(column):
     value = 0
-    for i in xrange(len(column)):
+    for i in range(len(column)):
         bit = column[i][0]
         value = (value << 1) | bit
     return value

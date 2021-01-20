@@ -22,7 +22,7 @@ def wiener_khninchin(bits):
 
     # Muliply each element by its complex conjugate
     fs_out = list()
-    for x in xrange(len(fs)):
+    for x in range(len(fs)):
         theconjugate = fs[x].conjugate()
         newvalue = fs[x]*theconjugate
         fs_out.append(newvalue)
@@ -42,7 +42,7 @@ def wiener_khninchin(bits):
 r = random.SystemRandom()
 bits = list()
 previous = 0
-for i in xrange(256):
+for i in range(256):
     if previous == 0:
         level = 0.2
     else:
@@ -57,8 +57,8 @@ for i in xrange(256):
 
 c = wiener_khninchin(bits) # Compute the correlogram
 
-print "bits:",bits
-print
-for i in xrange(32):
-    print "%02d  %06f" % (i,c[i])
+print("bits:",bits)
+print()
+for i in range(32):
+    print("%02d  %06f" % (i,c[i]))
 

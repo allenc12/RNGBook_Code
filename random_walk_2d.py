@@ -5,9 +5,9 @@ import math
 repetitions = 10000
 steps = 30
 finaldistance = [0 for x in range(-30,31)]
-for i in xrange(repetitions):
+for i in range(repetitions):
     state = [0.0,0.0]
-    for j in xrange(steps):
+    for j in range(steps):
         x = random.uniform(-1.0,1.0)
         state[0] += x
         if random.choice([True,False]):
@@ -17,8 +17,8 @@ for i in xrange(repetitions):
     distance = math.sqrt(state[0]**2 + state[1]**2)
     intdist = int(math.floor(distance))
     finaldistance[intdist]+=1 
-print "distance frequency"
-for i in xrange(0,steps+1):
-    print "%d %d" % (i,finaldistance[i])
+print("distance frequency")
+for i in range(0,steps+1):
+    print("%d %d" % (i,finaldistance[i]))
 
 

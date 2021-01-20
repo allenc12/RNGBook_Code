@@ -65,13 +65,13 @@ def longest_run_ones_in_a_block_test(bits):
     # Table of frequencies
     v = [0,0,0,0,0,0,0]
 
-    for i in xrange(N): # over each block
+    for i in range(N): # over each block
         #find longest run
         block = bits[i*M:((i+1)*M)] # Block i
         
         run = 0
         longest = 0
-        for j in xrange(M): # Count the bits.
+        for j in range(M): # Count the bits.
             if block[j] == 1:
                 run += 1
                 if run > longest:
@@ -107,11 +107,11 @@ def longest_run_ones_in_a_block_test(bits):
         upper = (v[i] - N*p_i)**2
         lower = N*p_i
         chi_sq += upper/lower
-    print "  n = "+str(n)
-    print "  K = "+str(K)
-    print "  M = "+str(M)
-    print "  N = "+str(N)
-    print "  chi_sq = "+str(chi_sq)
+    print("  n = "+str(n))
+    print("  K = "+str(K))
+    print("  M = "+str(M))
+    print("  N = "+str(N))
+    print("  chi_sq = "+str(chi_sq))
     p = gammaincc(K/2.0, chi_sq/2.0)
     
     success = (p >= 0.01)

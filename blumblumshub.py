@@ -13,9 +13,9 @@ x = key_pair2.p
 
 result = list()
 
-for i in xrange(256):
+for i in range(256):
     byte = 0
-    for j in xrange(8):
+    for j in range(8):
         x = (x*x) % M
         byte = (byte << 1) | (x % 2)
     result.append(byte)
@@ -24,6 +24,6 @@ str = ""
 for i,byte in enumerate(result):
     str += "%02x" % byte
     if (i>1) and (i % 16 == 0):
-        print str
+        print(str)
         str=""
 

@@ -45,14 +45,14 @@ for line in file.readlines(): # process the file
 # Get the results
 (p_v, p_sd , s_v, s_sd, mean, n) = w.results()
 if n < 2:
-    print "Too few samples (%d) to compute standard deviation" % n
+    print("Too few samples (%d) to compute standard deviation" % n)
 else:
-    print "n                             : ", n
-    print "Mean                          : ",mean
-    print "Population Variance           : ",p_v
-    print "Population Standard Deviation : ",p_sd
-    print "Sample Variance               : ",s_v
-    print "Sample Standard Deviation     : ",s_sd
+    print("n                             : ", n)
+    print("Mean                          : ",mean)
+    print("Population Variance           : ",p_v)
+    print("Population Standard Deviation : ",p_sd)
+    print("Sample Variance               : ",s_v)
+    print("Sample Standard Deviation     : ",s_sd)
   
 
 

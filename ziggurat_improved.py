@@ -7,25 +7,25 @@ import math
 rand = random.SystemRandom() # nondeterministic random source
 num = int(sys.argv[1])  # Number of random numbers
 
-kn=[0 for x in xrange(128)] # The three lookup tables
-wn=[0 for x in xrange(128)]
-fn=[0 for x in xrange(128)]
+kn=[0 for x in range(128)] # The three lookup tables
+wn=[0 for x in range(128)]
+fn=[0 for x in range(128)]
 
-//static double DRanNormalTail(double dMin, int iNegative) {
-//    double x, y;
-//    do
-//    {   x = log(DRanU()) / dMin;
-//        y = log(DRanU());
-//    } while (-2 * y < x * x);
-//
-//    return iNegative ? x - dMin : dMin - x;
-//}
+#static double DRanNormalTail(double dMin, int iNegative) {
+#    double x, y;
+#    do {
+#        x = log(DRanU()) / dMin;
+#        y = log(DRanU());
+#    } while (-2 * y < x * x);
+#
+#    return iNegative ? x - dMin : dMin - x;
+#}
 
 
 
 #define ZIGNOR_C 128 /* number of blocks */
 #define ZIGNOR_R 3.442619855899 /* start of the right tail */
-                   /* (R * phi(R) + Pr(X>=R)) * sqrt(2\pi) */
+#                  /* (R * phi(R) + Pr(X>=R)) * sqrt(2\pi) */
 #define ZIGNOR_V 9.91256303526217e-3
 
 #/* s_adZigX holds coordinates, such that each rectangle has*/
@@ -36,8 +36,8 @@ fn=[0 for x in xrange(128)]
 ZIGNOR_C = 128
 ZIGNOR_R = 3.442619855899
 ZIGNOR_V = 9.91256303526217e-3 #(R * phi(R) + Pr(X>=R)) * sqrt(2\pi)
-s_adZigX = [0.0 for x in xrange(ZIGNOR_C + 1)]
-s_adZigR = [0.0 for x in xrange(ZIGNOR_C)]
+s_adZigX = [0.0 for x in range(ZIGNOR_C + 1)]
+s_adZigR = [0.0 for x in range(ZIGNOR_C)]
 
 def DRanU():
     return rand.uniform(0,1.0)
@@ -68,11 +68,11 @@ def zigNorInit(iC, dR, dV):
     s_adZigX[1] = dR
     s_adZigX[iC] = 0
 
-    for i in xrange(2,iC):
+    for i in range(2,iC):
         s_adZigX[i] = math.sqrt(-2 * math.log(dV / s_adZigX[i - 1] + f))
         f = math.exp(-0.5 * s_adZigX[i] * s_adZigX[i])
     
-    for i in xrange(2,iC):
+    for i in range(2,iC):
         s_adZigR[i] = s_adZigX[i + 1] / s_adZigX[i];
 
 def DRanNormalZig():
@@ -92,7 +92,7 @@ def DRanNormalZig():
             
         #bottom box: sample from the tail
         if (i == 0):
-            return DRanNormalTail(ZIGNOR_R, u < 0):
+            return DRanNormalTail(ZIGNOR_R, u < 0)
         
         # is this a sample from the wedges?
         x = u * s_adZigX[i]
@@ -100,7 +100,7 @@ def DRanNormalZig():
         f1 = math.exp(-0.5 * (s_adZigX[i+1] * s_adZigX[i+1] - x * x))
         
         if (f1 + DRanU() * (f0 - f1) < 1.0):
-            return x;   
+            return x
             
                  
 #static void zigNorInit(int iC, double dR, double dV) {
@@ -198,7 +198,7 @@ def build_tables():
     fn[0]=1.0
     fn[127]=math.exp(-.5*dn*dn)
     
-    for i in xrange(126,0,-1):
+    for i in range(126,0,-1):
         dn=math.sqrt(-2.*math.log(vn/dn+math.exp(-.5*dn*dn)));
         kn[i+1]=int((dn/tn)*m1);
         tn=dn;
@@ -206,6 +206,6 @@ def build_tables():
         wn[i]=dn/m1;
 
 build_tables()
-for i in xrange(num):
-    print ziggurat_normal()
+for i in range(num):
+    print(ziggurat_normal())
 

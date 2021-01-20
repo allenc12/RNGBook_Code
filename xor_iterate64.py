@@ -14,7 +14,7 @@ def xor_iterate64(n):
     p_pool_0 = p_input_0
     p_pool_other = p_input_other
     
-    for i in xrange(n):
+    for i in range(n):
         p_0     = p_input_0 * p_pool_0
         p_0    += ttt64m1 * p_input_other * p_pool_other
         
@@ -24,12 +24,10 @@ def xor_iterate64(n):
         
         p_pool_0 = p_0
         p_pool_other = p_other
-        difference = p_pool_0 – p_pool_other
+        difference = p_pool_0 - p_pool_other
     
-        print “Iteration  %d” % (i+1)
-        print “  P(0)    “,p_pool_0
-        print “  P(Other)”,p_pool_other
-        print “  Difference “,difference
-        print
+        print("Iteration  %d" % (i+1))
+        print("  P(0)    ",p_pool_0)
+        print("  P(Other)",p_pool_other)
+        print("  Difference ",difference,end="\n\n")
 
-        

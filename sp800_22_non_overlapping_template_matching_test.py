@@ -28,7 +28,7 @@ import random
 
 def non_overlapping_template_matching_test(bits):
     # The templates provdided in SP800-22rev1a
-    templates = [None for x in xrange(7)]
+    templates = [None for x in range(7)]
     templates[0] = [[0,1],[1,0]]
     templates[1] = [[0,0,1],[0,1,1],[1,0,0],[1,1,0]]
     templates[2] = [[0,0,0,1],[0,0,1,1],[0,1,1,1],[1,0,0,0],[1,1,0,0],[1,1,1,0]]
@@ -84,7 +84,7 @@ def non_overlapping_template_matching_test(bits):
     n = M*N
     
     blocks = list() # Split into N blocks of M bits
-    for i in xrange(N):
+    for i in range(N):
         blocks.append(bits[i*M:(i+1)*M])
 
     W=list() # Count the number of matches of the template in each block Wj
@@ -103,7 +103,7 @@ def non_overlapping_template_matching_test(bits):
     sigma = M * ((1.0/float(2**m))-(float((2*m)-1)/float(2**(2*m))))
 
     chisq = 0.0  # Compute Chi-Square
-    for j in xrange(N):
+    for j in range(N):
         chisq += ((W[j] - mu)**2)/(sigma**2)
 
     p = gammaincc(N/2.0, chisq/2.0) # Compute P value

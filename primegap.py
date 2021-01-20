@@ -7,5 +7,5 @@ xmo = x -1
 
 gap = (x * int(math.log(x))) - (xmo * int(math.log(xmo)))
 
-print gap
+print(gap)
 

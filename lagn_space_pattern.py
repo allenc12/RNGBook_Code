@@ -8,7 +8,7 @@ import sys
 def permute(original,reverse_len):
     permutedlist = list()
     blocks = len(original)-(len(original) % reverse_len)
-    for i in xrange(blocks):  # Cut the list into blocks to reverse
+    for i in range(blocks):  # Cut the list into blocks to reverse
         bits = original[(i*reverse_len):((i+1)*reverse_len)]
         revblock = list()
         for bit in bits: # Reverse the bits in the block
@@ -24,14 +24,14 @@ lagmax = int(sys.argv[2])
 
 outarray = list()
 
-for lag in xrange(1,lagmax+1):
+for lag in range(1,lagmax+1):
     outcolumn = list()
     # Make the list long enough.
     chainlen = (reverse_len+lag)*4
     chain = dict()
     original = list()
     # Build the chain
-    for i in xrange(chainlen):
+    for i in range(chainlen):
         chain[i]=i+1
         original.append(i)
 
@@ -40,7 +40,7 @@ for lag in xrange(1,lagmax+1):
 
 
     # Take each pair and count the spacing.
-    for i in xrange(len(permutedlist)-lag):
+    for i in range(len(permutedlist)-lag):
         #take pair from permuted list
         first = permutedlist[i]
         second = permutedlist[i+lag]
@@ -50,17 +50,17 @@ for lag in xrange(1,lagmax+1):
             
         #Follow Dict and count
         count = 0
-        next = first
-        while (next != second):
-            next = chain[next]
+        nxt = first
+        while (nxt != second):
+            nxt = chain[nxt]
             count += 1
             
         #report the count
         outcolumn.append(count)
     outarray.append(outcolumn)
     
-print " Step Distance --->"
+print(" Step Distance --->")
 for i,row in enumerate(outarray):
     astr = [str(x).ljust(2)+" " for x in row]
-    print str(i+1).ljust(3) + ": "+ ','.join(astr)[:120]
+    print(str(i+1).ljust(3) + ": "+ ','.join(astr)[:120])
     

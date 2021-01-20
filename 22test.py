@@ -80,13 +80,13 @@ def random_excursion_test(bits):
         pos = pos + 1
     
     J = len(cycles)
-    print "J="+str(J)    
+    print("J="+str(J))    
     
     vxk = [['a','b','c','d','e','f'] for y in [-4,-3,-2,-1,1,2,3,4] ]
 
     # Count Occurances  
-    for k in xrange(6):
-        for index in xrange(8):
+    for k in range(6):
+        for index in range(8):
             mapping = [-4,-3,-2,-1,1,2,3,4]
             x = mapping[index]
             cyclecount = 0
@@ -117,11 +117,11 @@ def random_excursion_test(bits):
           [0.9286  ,0.0051 ,0.0047 ,0.0044  ,0.0041 ,0.0531]]
     # Compute chi-sq and P value for the 8 cases
     success = True
-    for index in xrange(8):
+    for index in range(8):
         mapping = [-4,-3,-2,-1,1,2,3,4]
         x = mapping[index]
         chisq = 0.0
-        for k in xrange(6):
+        for k in range(6):
             top = float(vxk[index][k]) - (float(J) * (pixk[abs(x)-1][k]))
             top = top*top
             bottom = J * pixk[abs(x)-1][k]
@@ -132,53 +132,53 @@ def random_excursion_test(bits):
             success = False
         else:
             err = ""
-        print "x = %1.0f\tchisq = %f\tp = %f %s"  % (x,chisq,p,err)
+        print("x = %1.0f\tchisq = %f\tp = %f %s"  % (x,chisq,p,err))
 
     if success:
-        print "PASS"
+        print("PASS")
     else:    
-        print "FAIL: Data not random"
+        print("FAIL: Data not random")
     return success,sprime
 
 somehex = 0xff00ff00ff00ff0055aa55aa55aa55aa55aaab
 bits = hex2bits(somehex)
-print "bits = ",bits
-print "Monobit(0x%x) = %f" % (somehex,monobit(bits))
+print("bits = ",bits)
+print("Monobit(0x%x) = %f" % (somehex,monobit(bits)))
 
-print
-print "Frequency within blocks"
+print()
+print("Frequency within blocks")
 bits=[0,1,1,0,0,1,1,0,1,0]
 p = frequency_within_block_test(bits, 3)
-print "bits =",bits 
-print "P = %f" % p
+print("bits =",bits) 
+print("P = %f" % p)
 
-print
-print "Runs Test"
+print()
+print("Runs Test")
 bits=[1,0,0,1,1,0,1,0,1,1]
 p = runs(bits)
-print "bits =",bits 
-print "P = %f" % p
+print("bits =",bits) 
+print("P = %f" % p)
 
-print
-print "Longest Run of Ones in a Block test"
-print "Waiting on book"
+print()
+print("Longest Run of Ones in a Block test")
+print("Waiting on book")
 
-print
-print "DFT Test"
+print()
+print("DFT Test")
 bits=[1,1,0,0,1,0,0,1,0,0,0,0,1,1,1,1,1,1,0,1,1,0,1,0,1,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0,1,1,0,1,0,0,0,1,1,
       0,0,0,0,1,0,0,0,1,1,0,1,0,0,1,1,0,0,0,1,0,0,1,1,0,0,0,1,1,0,0,1,1,0,0,0,1,0,1,0,0,0,1,0,1,1,1,0,0,0]
 
 p = dft_test(bits)
-print bits
-print "P=",p
+print(bits)
+print("P=",p)
 
-print
-print "Non Overlapping Template Test"
+print()
+print("Non Overlapping Template Test")
 
 bits = list()
-for i in xrange(2**10):
+for i in range(2**10):
     r = random.getrandbits(2**10)
-    for j in xrange(2**10):
+    for j in range(2**10):
         bits.append(r & 0x1)
         r = r >> 1
 N = 8
@@ -187,19 +187,19 @@ B = [0,0,0,0,0,0,0,0,1]
 
 p = non_overlapping_template_matching_test(bits,B,M,N)
 
-print "len(bits) = ",len(bits)
-print "M = ",M
-print "N = ",N
-print "B = ",B
-print "P-Value = ",p
+print("len(bits) = ",len(bits))
+print("M = ",M)
+print("N = ",N)
+print("B = ",B)
+print("P-Value = ",p)
 
-print
-print "Overlapping Template Test"
+print()
+print("Overlapping Template Test")
 
 bits = list()
-for i in xrange(1000):
+for i in range(1000):
     r = random.getrandbits(1000)
-    for j in xrange(1000):
+    for j in range(1000):
         bits.append(r & 0x1)
         r = r >> 1
 N = 968
@@ -209,15 +209,15 @@ K = 5
 
 p = overlapping_template_matching_test(bits,B,M,N,K)
 
-print "len(bits) = ",len(bits)
-print "M = ",M
-print "N = ",N
-print "P-Value = ",p
+print("len(bits) = ",len(bits))
+print("M = ",M)
+print("N = ",N)
+print("P-Value = ",p)
 
-print
-print "Random Excursion Test"
+print()
+print("Random Excursion Test")
 bits=[0,1,1,0,1,1,0,1,0,1]
-print "bits = "+str(bits)
+print("bits = "+str(bits))
 success,sprime = random_excursion_test(bits)
 
 f = open('../data_files/random_excursion_test1.dat','w')
@@ -230,20 +230,20 @@ f.close()
 
 #Gather 1,000,000 bits and run through excursion test.
 bits = list()
-for i in xrange(1000):
+for i in range(1000):
     r = random.getrandbits(1000)
-    for j in xrange(1000):
+    for j in range(1000):
         bits.append(r & 0x1)
         r = r >> 1
 success,sprime = random_excursion_test(bits)
 
 #Gather 1,000,000 bits and run through excursion variant test.
-print
-print "Random Excursion Variant Test"
+print()
+print("Random Excursion Variant Test")
 bits = list()
-for i in xrange(1000):
+for i in range(1000):
     r = random.getrandbits(1000)
-    for j in xrange(1000):
+    for j in range(1000):
         bits.append(r & 0x1)
         r = r >> 1
 success,sprime = random_excursion_variant_test(bits)

@@ -30,15 +30,15 @@ for line in file.readlines():
         pass
 
 if n < 2:
-    print "Too vew samples to compute standard deviation"
-    print "Mean = %f" % mean
+    print("Too vew samples to compute standard deviation")
+    print("Mean = %f" % mean)
 else:
-    print "Population Variance = %f" % (m2 / n)
-    print "Population std dev  = %f" % math.sqrt(m2 / n)
+    print("Population Variance = %f" % (m2 / n))
+    print("Population std dev  = %f" % math.sqrt(m2 / n))
     
-    print "Sample     Variance = %f" % (m2 / (n-1))
-    print "Sample     std dev  = %f" % math.sqrt(m2 / (n-1))
-    print "Mean                = %f" % mean
+    print("Sample     Variance = %f" % (m2 / (n-1)))
+    print("Sample     std dev  = %f" % math.sqrt(m2 / (n-1)))
+    print("Mean                = %f" % mean)
 
 file.close()
 

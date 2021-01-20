@@ -30,7 +30,7 @@ def frequency_within_block(bits, num_of_blocks):
     n = int(block_size * num_of_blocks)
 
     proportions = list()
-    for i in xrange(num_of_blocks):
+    for i in range(num_of_blocks):
         block = bits[i*(block_size):((i+1)*(block_size))]
         zeroes,ones = count_ones_zeroes(block)
         proportions.append(Fraction(ones,block_size))
@@ -57,11 +57,11 @@ def hex2bits(thehex):
 
 somehex = 0xff00ff00ff00ff0055aa55aa55aa55aa55aaab
 bits = hex2bits(somehex)
-print "bits = ",bits
-print "Monobit(0x%x) = %f" % (somehex,monobit(bits))
+print("bits = ",bits)
+print("Monobit(0x%x) = %f" % (somehex,monobit(bits)))
 
-print "Frequency within blocks"
+print("Frequency within blocks")
 bits=[0,1,1,0,0,1,1,0,1,0]
 p = frequency_within_block(bits, 3)
-print "bits =",bits
-print "P = %f" % p
+print("bits =",bits)
+print("P = %f" % p)

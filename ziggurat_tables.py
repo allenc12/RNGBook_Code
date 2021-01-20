@@ -4,9 +4,9 @@ import sys
 import random
 import math
 
-kn=[0 for x in xrange(128)] # The three lookup tables
-wn=[0 for x in xrange(128)]
-fn=[0 for x in xrange(128)]
+kn=[0 for x in range(128)] # The three lookup tables
+wn=[0 for x in range(128)]
+fn=[0 for x in range(128)]
 
 # Create tables
 def build_tables():
@@ -28,7 +28,7 @@ def build_tables():
     fn[0]=1.0
     fn[127]=math.exp(-.5*dn*dn)
     
-    for i in xrange(126,0,-1):
+    for i in range(126,0,-1):
         dn=math.sqrt(-2.*math.log(vn/dn+math.exp(-.5*dn*dn)));
         kn[i+1]=int((dn/tn)*m1);
         tn=dn;
@@ -37,23 +37,23 @@ def build_tables():
 
 build_tables()
 
-print "Writing kn file"
+print("Writing kn file")
 f = open('../data_files/ziggurat_kn.dat','w')
-for i in xrange(1,len(kn)):
+for i in range(1,len(kn)):
     thestring = str(i)+" "+str(kn[i])+"\n"
     f.write(thestring)
 f.close()
 
 f = open('../data_files/ziggurat_wn.dat','w')    
-print "Writing wn file"
-for i in xrange(len(wn)):
+print("Writing wn file")
+for i in range(len(wn)):
     thestring = str(i)+" "+str(wn[i])+"\n"
     f.write(thestring)
 f.close()
     
 f = open('../data_files/ziggurat_fn.dat','w')    
-print "Writing fn file"
-for i in xrange(len(fn)):
+print("Writing fn file")
+for i in range(len(fn)):
     thestring = str(i)+" "+str(fn[i])+"\n"
     f.write(thestring)
 f.close()

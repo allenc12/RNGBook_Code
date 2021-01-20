@@ -16,7 +16,7 @@ with open(filename,"rb") as f:
         astr = ""
         for byte in digest:
             astr += "%02X" % ord(byte)
-        print astr
+        print(astr)
         bytes = f.read(128)
 f.close()
 

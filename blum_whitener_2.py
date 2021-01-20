@@ -18,7 +18,7 @@ ic = 2**16  # input count
 # Initiatize all states to L
 state_bits = ['L' for x in states]
 i = 1
-for j in xrange(ic):
+for j in range(ic):
     # Step 1
     s = ""
     for st in state_bits:
@@ -37,7 +37,7 @@ for j in xrange(ic):
             index = 0
 
         if len(out_string) == 64:
-            print out_string
+            print(out_string)
             out_string = ""
 
     # Step 2
@@ -68,6 +68,6 @@ for j in xrange(ic):
     # Step 4
     i = next_state
 
-print >> sys.stderr,  "Bits in:",ic,", Bits out:",count," Ratio:",(float(count)/ic)
+print("Bits in:",ic,", Bits out:",count," Ratio:",(float(count)/ic), file=sys.stderr)
 
 

@@ -11,7 +11,7 @@ out_value = 0
 out_string = ""
 index = 0
 
-for i in xrange(4096):
+for i in range(4096):
     (s,ov,dest1,dest_prob,dest2) = states[state]
     if ov == 1:
         out_value = out_value + (0x01 << index)
@@ -23,7 +23,7 @@ for i in xrange(4096):
         index = 0
 
     if len(out_string) == 64:
-        print out_string
+        print(out_string)
         out_string = ""
 
     if random.SystemRandom().random() < dest_prob:

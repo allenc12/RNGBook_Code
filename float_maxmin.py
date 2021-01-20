@@ -24,7 +24,7 @@ for e in es:
     smallest = makefloat(0,e,lowend)
     largest = makefloat(0,e,highend)
 
-    print("e = %d, from : %f   to  %f, range %f" % (e,smallest,largest,largest-smallest))
+    print(("e = %d, from : %f   to  %f, range %f" % (e,smallest,largest,largest-smallest)))
 
 print()
 
@@ -33,4 +33,4 @@ for e in es:
     smallest = makefloat(0,e,lowend)
     largest = makefloat(0,e,highend)
 
-    print("e = %d, from : %0.50f   to  %0.50f, range %0.50f" % (e,smallest,largest,largest-smallest))
+    print(("e = %d, from : %0.50f   to  %0.50f, range %0.50f" % (e,smallest,largest,largest-smallest)))

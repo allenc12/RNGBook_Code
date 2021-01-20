@@ -1,5 +1,7 @@
+import os
 from fractions import Fraction
 from mpmath import *
+from struct import *
 
 def xor_iterate(n):
     next_prob=dict()
@@ -30,8 +32,8 @@ def xor_iterate(n):
         
         p_pool = {0:prob00, 1:prob01, 2:prob10, 3:prob11}
     
-        iter = "%d" % (i+1)
-        print(iter.rjust(4)+("      %4f %4f %4f %4f" % ( p_pool[0], p_pool[1], p_pool[2], p_pool[3])))
+        itr = "%d" % (i+1)
+        print(itr.rjust(4)+("      %4f %4f %4f %4f" % ( p_pool[0], p_pool[1], p_pool[2], p_pool[3])))
         
 def xor_iterate64(n):
     mp.prec = 200
@@ -62,14 +64,11 @@ def xor_iterate64(n):
         print("Iteration  %d" % (i+1))
         print("  P(0)    ",p_pool_0)
         print("  P(Other)",p_pool_other)
-        print("  Difference ",difference)
-        print()
+        print("  Difference ",difference,end="\n\n")
         
-        #print iter.rjust(4)+"  "+str(fp0)+" "+str(fp_other)
+        #print(itr.rjust(4)+"  "+str(fp0)+" "+str(fp_other))
 
 # A 16 bit random number source
-import os
-from struct import *
         
 def rand16(bits):
     # Get two random bytes from the operating system
@@ -150,10 +149,8 @@ def xor_iteraten_fips(bits=16, iterations=2):
         print("Iteration  %d - random# = %X" % (i+1, lastrand))
         print("  minP    ",min(p_pool))
         print("  maxP    ",max(p_pool))
-        print("  Difference ",(max(p_pool)-min(p_pool)))
-        print()  
+        print("  Difference ",(max(p_pool)-min(p_pool)),end="\n\n")
 
-From mpmath import *
         
 def xor_iterate64(n):
     mp.prec = 200
@@ -169,7 +166,7 @@ def xor_iterate64(n):
     p_pool_0 = p_input_0
     p_pool_other = p_input_other
     
-    for i in xrange(n):
+    for i in range(n):
         p_0     = p_input_0 * p_pool_0
         p_0    += ttt64m1 * p_input_other * p_pool_other
         
@@ -179,12 +176,11 @@ def xor_iterate64(n):
         
         p_pool_0 = p_0
         p_pool_other = p_other
-        difference = p_pool_0 – p_pool_other
+        difference = p_pool_0 - p_pool_other
     
-        print “Iteration  %d” % (i+1)
-        print “  P(0)    “,p_pool_0
-        print “  P(Other)”,p_pool_other
-        print “  Difference “,difference
-        print
+        print("Iteration  %d" % (i+1))
+        print("  P(0)    ",p_pool_0)
+        print("  P(Other)",p_pool_other)
+        print("  Difference ",difference,end="\n\n")
 
         

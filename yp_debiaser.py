@@ -5,11 +5,11 @@ import sys
 def von_neumann_debiaser(bits):
     result = list()
     l = len(bits)/2
-    for i in xrange(l):
+    for i in range(l):
         twobits = bits[l*2:(l*2+1)]
-        if twobits = [0,1]:
+        if twobits == [0,1]:
             result.append(1)
-        elif twobits = [1,0]:
+        elif twobits == [1,0]:
             result.append(0)
     return result
 
@@ -26,12 +26,12 @@ def yuval_peres_debiser(bits,depth):
     first = von_neumann_debiaser(bits)
 
     u = list()  # The second part
-    for i in xrange(l):
+    for i in range(l):
         u.append(bits[2*i] ^ bits[(2*i)+1])
     second = yuval_peres_debiaser(u,depth-1)
     
     v = list() # The third part
-    for i in xrange(l):
+    for i in range(l):
         if bits[2*i] == bits[(2*i)+1]:
             v.append(bits[2*i])
     third = yuval_perez_debiaser(v,depth-1)
@@ -51,12 +51,12 @@ outbitlist = list()
 outbytelist = list()
 
 with open(filename,"rb") as f:
-    bytes = f.read(1024) # Read a chunk of bytes
+    bytechunk = f.read(1024) # Read a chunk of bytes
     bitstr = list()
     while bytes:
-        for byte in bytes:
+        for byte in bytechunk:
             # convert to bit string
-            for i in xrange(8):
+            for i in range(8):
                 bit = (byte >> i) & 0x01
                 bitstr.append(bit)
 
@@ -67,7 +67,7 @@ with open(filename,"rb") as f:
             outbyte = 0
             bits = outbitlist[:8]  # Pull 8 bits off the front
             outbitlist = outbitlist[8:]
-            for i in xrange(8):       # Turn them into a byte
+            for i in range(8):       # Turn them into a byte
                 outbyte = outbyte << 1
                 outbyte = outbyte + bits[7-i] 
             outbytelist.append(outbyte) # add it to the output

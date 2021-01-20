@@ -23,41 +23,41 @@ def xor_iterate_fips(bits=16, iterations=16):
     p_input = list()
     next_p = list()
     p_pool = list()
-    for i in xrange(2**bits):
+    for i in range(2**bits):
         p_input.append(0)
         p_pool.append(oo2smo)
         next_p.append(0)
     p_pool[lastrand] = 0
     
-    print "Initial rand = %X" % lastrand
+    print("Initial rand = %X" % lastrand)
     
-    for i in xrange(iterations):
+    for i in range(iterations):
         therand = rt.rand16() # lastrand will not occur
         mask = (2**bits)-1
         therand = therand & mask
         
         # fill in the input distribution
-        for j in xrange(2**bits):
+        for j in range(2**bits):
             p_input[j] = oo2smo
             next_p[j]=0
         p_input[lastrand] = 0
         
-        for a in xrange(2**bits):
-            for b in xrange(2**bits):
+        for a in range(2**bits):
+            for b in range(2**bits):
                 axorb = a ^ b
                 p_axorb = p_input[a] * p_pool[b]
                 next_p[axorb] += p_axorb
                 
         lastrand = therand
         
-        for j in xrange(2**bits):
+        for j in range(2**bits):
             p_pool[j] = next_p[j]
         
-        print "Iteration  %d - random# = %X" % (i+1, lastrand)
-        print "  minP    ",min(p_pool)
-        print "  maxP    ",max(p_pool)
-        print "  Difference ",(max(p_pool)-min(p_pool))
-        print
+        print("Iteration  %d - random# = %X" % (i+1, lastrand))
+        print("  minP    ",min(p_pool))
+        print("  maxP    ",max(p_pool))
+        print("  Difference ",(max(p_pool)-min(p_pool)))
+        print()
 
 xor_iterate_fips()
         

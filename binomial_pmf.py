@@ -6,7 +6,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 def binom_pmf(n,p):
-    xs = range(n+1)
+    xs = list(range(n+1))
     ys = [(math.factorial(n)/(math.factorial(k)*math.factorial(n-k))) \
           *(p**k) \
           *((1-p)**(n-k)) for k in range(n+1) ]

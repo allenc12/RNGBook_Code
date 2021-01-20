@@ -10,5 +10,5 @@ denom_b = int(math.log(b))
 
 pcount = (b/denom_b) - (a/denom_a) 
 
-print "10^",math.log10(pcount)
-print "2^",math.log(pcount,2)
+print("10^",math.log10(pcount))
+print("2^",math.log(pcount,2))

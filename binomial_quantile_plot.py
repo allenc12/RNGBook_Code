@@ -16,7 +16,7 @@ n = 32
 p = 0.4
 alpha = 0.67
 
-xs = range(n+1)
+xs = list(range(n+1))
 ys = [BCDF(n,x,p) for x in xs]
 
 k = binomial_quantile(n,p,alpha)

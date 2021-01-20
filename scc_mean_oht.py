@@ -11,7 +11,7 @@ def scc256(bitlist):
     previous = bitlist[255:]
     count1 = 0
     counts = [0,0,0,0]
-    for i in xrange(256):
+    for i in range(256):
         if bitlist[i] == 1:
             count1 += 1
 
@@ -37,7 +37,7 @@ def compute_mean_scc(count1,counts):
 # get filename
 filename = sys.argv[1]
 
-print "mean, scc"
+print("mean, scc")
 with open(filename,"rb") as f:
     bytes = f.read(32) # Read 256 bits
     while len(bytes) == 32:
@@ -49,7 +49,7 @@ with open(filename,"rb") as f:
         (count1,counts) = scc256(bitlist) 
         (mean,scc) = compute_mean_scc(count1,counts)
 
-        print mean," ",scc
+        print(mean," ",scc)
         bytes = f.read(32)
 f.close()
 

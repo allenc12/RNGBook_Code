@@ -12,7 +12,7 @@ def Pr(u, eta):
         p = math.exp(-eta)
     else:
         sum = 0.0
-        for l in xrange(1,u+1): #( l=1; l<=u; l++ )
+        for l in range(1,u+1): #( l=1; l<=u; l++ )
             sum += math.exp(-eta-u*math.log(2)+l*math.log(eta)-lgamma(l+1)+lgamma(u)-lgamma(l)-lgamma(u-l+1))
         p = sum
     return p
@@ -22,24 +22,24 @@ def overlapping_template_matching_test(bits):
     
     m = 10
     # Build the template B as a random list of bits
-    B = [1 for x in xrange(m)]
+    B = [1 for x in range(m)]
     
     N = 968
     K = 5
     M = 1062
     if len(bits) < (M*N):
-        print "Insufficient data. %d bit provided. 1,028,016 bits required" % len(bits)
+        print("Insufficient data. %d bit provided. 1,028,016 bits required" % len(bits))
         return False, 0.0, None
     
     blocks = list() # Split into N blocks of M bits
-    for i in xrange(N):
+    for i in range(N):
         blocks.append(bits[i*M:(i+1)*M])
 
     # Count the distribution of matches of the template across blocks: Vj
-    v=[0 for x in xrange(K+1)] 
+    v=[0 for x in range(K+1)] 
     for block in blocks:
         count = 0
-        for position in xrange(M-m):
+        for position in range(M-m):
             if block[position:position+m] == B:
                 count += 1
             
@@ -59,7 +59,7 @@ def overlapping_template_matching_test(bits):
     lambd = (M-m+1.0)/(2.0**m)
     eta = lambd/2.0
     sum = 0.0
-    for i in xrange(K): # ( i=0; i<K; i++ ) {         /* Compute Probabilities */
+    for i in range(K): # ( i=0; i<K; i++ ) {         /* Compute Probabilities */
         pi[i] = Pr(i, eta)
         sum += pi[i]
 
@@ -67,7 +67,7 @@ def overlapping_template_matching_test(bits):
 
     #for block in blocks:
     #    count = 0
-    #    for j in xrange(M-m+1):
+    #    for j in range(M-m+1):
     #        if B == block[j:j+m]:
     #            count += 1
     #    if ( count <= 4 ):
@@ -77,7 +77,7 @@ def overlapping_template_matching_test(bits):
 
     sum = 0    
     chisq = 0.0
-    for i in xrange(K+1):
+    for i in range(K+1):
         chisq += ((v[i] - (N*pi[i]))**2)/(N*pi[i])
         sum += v[i]
         
@@ -97,10 +97,10 @@ def overlapping_template_matching_test(bits):
 
 r = random.SystemRandom()
 
-print "v0,v1,v2,v3,v4,v5"
-for i in xrange(100):
-    bits = [r.getrandbits(1) for x in xrange(1028016)]
+print("v0,v1,v2,v3,v4,v5")
+for i in range(100):
+    bits = [r.getrandbits(1) for x in range(1028016)]
     success,p,v = overlapping_template_matching_test(bits)
     astr = ','.join([str(x) for x in v])
-    print astr
+    print(astr)
     

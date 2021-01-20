@@ -6,5 +6,5 @@ r = random.SystemRandom()
 
 for i in range(5):
     key = r.getrandbits(256)
-    print "  %064x" % key
+    print("  %064x" % key)
 

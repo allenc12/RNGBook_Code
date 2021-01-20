@@ -3,7 +3,7 @@
 import math
 import random
 
-print "Correlation Coeff,  Pearson Phi,  (2*P(x[i]=x[y]))-1,  X mean,  Y mean"
+print("Correlation Coeff,  Pearson Phi,  (2*P(x[i]=x[y]))-1,  X mean,  Y mean")
 for round in range(10):
     n = 10000
 
@@ -104,5 +104,5 @@ for round in range(10):
     prob = float(aeqb)/float(n)
     c_aeqb = (prob*2.0) - 1.0
 
-    print "%1.6f            %1.6f      %1.6f             %1.6f %1.6f" % (c_cc,c_pp,c_aeqb, x_mean, y_mean)
+    print("%1.6f            %1.6f      %1.6f             %1.6f %1.6f" % (c_cc,c_pp,c_aeqb, x_mean, y_mean))
 

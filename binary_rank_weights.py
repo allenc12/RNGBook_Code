@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 
-print "M   Q   Pi_1           Pi_2           Pi_3"
+print("M   Q   Pi_1           Pi_2           Pi_3")
 
 for x in range(3,65):
     M = x
@@ -29,7 +29,7 @@ for x in range(3,65):
 
     prob_remain = 1.0 - prob_m - prob_mm
 
-    print str(M).ljust(4) + str(Q).ljust(4) + str(prob_m).ljust(15) + str(prob_mm).ljust(15) + str(prob_remain).ljust(15)
+    print(str(M).ljust(4) + str(Q).ljust(4) + str(prob_m).ljust(15) + str(prob_mm).ljust(15) + str(prob_remain).ljust(15))
 
 
         

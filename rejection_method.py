@@ -21,11 +21,11 @@ number_of_numbers = 1000000
 
 histogram = [0 for x in range(range_end+4)]
 
-for i in xrange(number_of_numbers):
+for i in range(number_of_numbers):
     result = rand_range(range_start,range_end)
     histogram[result] = histogram[result]+1
 
 print("Histogram")
-for i in xrange(range_end+3):
-    print("value : %2d  frequency %d" % (i,histogram[i]))
+for i in range(range_end+3):
+    print(("value : %2d  frequency %d" % (i,histogram[i])))
  

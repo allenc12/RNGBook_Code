@@ -45,20 +45,20 @@ def runs_test(bits):
     zeroes,ones = count_ones_zeroes(bits)
 
     prop = float(ones)/float(n)
-    print "  prop ",prop
+    print("  prop ",prop)
 
     tau = 2.0/math.sqrt(n)
-    print "  tau ",tau
+    print("  tau ",tau)
 
     if abs(prop-0.5) > tau:
         return (False,0.0,None)
 
     vobs = 1.0
-    for i in xrange(n-1):
+    for i in range(n-1):
         if bits[i] != bits[i+1]:
             vobs += 1.0
 
-    print "  vobs ",vobs
+    print("  vobs ",vobs)
       
     p = math.erfc(abs(vobs - (2.0*n*prop*(1.0-prop)))/(2.0*math.sqrt(2.0*n)*prop*(1-prop) ))
     success = (p >= 0.01)

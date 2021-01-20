@@ -34,7 +34,7 @@ def read_bits_from_file(filename,bigendian):
         if bytes:
             for bytech in bytes:
                 byte = ord(bytech)
-                for i in xrange(8):
+                for i in range(8):
                     if bigendian:
                         bit = (byte & 0x80) >> 7
                         byte = byte << 1
@@ -92,10 +92,10 @@ testlist = [
         'random_excursion_test',
         'random_excursion_variant_test']
 
-print "Tests of Distinguishability from Random"
+print("Tests of Distinguishability from Random")
 if args.list_tests:
-    for i,testname in zip(xrange(len(testlist)),testlist):
-        print str(i+1).ljust(4)+": "+testname
+    for i,testname in zip(range(len(testlist)),testlist):
+        print(str(i+1).ljust(4)+": "+testname)
     exit()
 
 bits = read_bits_from_file(filename,bigendian)    
@@ -104,28 +104,28 @@ if args.testname:
     if args.testname in testlist:    
         m = __import__ ("sp800_22_"+args.testname)
         func = getattr(m,args.testname)
-        print "TEST: %s" % args.testname
+        print("TEST: %s" % args.testname)
         success,p,plist = func(bits)
         gotresult = True
         if success:
-            print "PASS"
+            print("PASS")
         else:
-            print "FAIL"
+            print("FAIL")
  
         if p:
-            print "P="+str(p)
+            print("P="+str(p))
 
         if plist:
             for pval in plist:
-                print "P="+str(pval)
+                print("P="+str(pval))
     else:
-        print "Test name (%s) not known" % args.ttestname
+        print("Test name (%s) not known" % args.ttestname)
         exit()
 else:
     results = list()
     
     for testname in testlist:
-        print "TEST: %s" % testname
+        print("TEST: %s" % testname)
         m = __import__ ("sp800_22_"+testname)
         func = getattr(m,testname)
         
@@ -133,28 +133,28 @@ else:
 
         summary_name = testname
         if success:
-            print "  PASS"
+            print("  PASS")
             summary_result = "PASS"
         else:
-            print "  FAIL"
+            print("  FAIL")
             summary_result = "FAIL"
         
         if p != None:
-            print "  P="+str(p)
+            print("  P="+str(p))
             summary_p = str(p)
             
         if plist != None:
             for pval in plist:
-                print "P="+str(pval)
+                print("P="+str(pval))
             summary_p = str(min(plist))
         
         results.append((summary_name,summary_p, summary_result))
         
-    print
-    print "SUMMARY"
-    print "-------"
+    print()
+    print("SUMMARY")
+    print("-------")
     
     for result in results:
         (summary_name,summary_p, summary_result) = result
-        print summary_name.ljust(40),summary_p.ljust(18),summary_result
+        print(summary_name.ljust(40),summary_p.ljust(18),summary_result)
     

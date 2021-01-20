@@ -7,7 +7,7 @@ def binary_lagn(bits,n):
     t1 = 0.0
     t2 = 0.0
     count = len(bits)
-    for i in xrange(count):
+    for i in range(count):
         if (bits[(i+n) % count]==1) and (bits[i]==1):
             t1 += 1.0
         if (bits[i]==1):
@@ -26,7 +26,7 @@ def read_binary_file(filename):
             block = thefile.read(4096)
             if block:
                 for thebyte in block:
-                    for i in xrange(8):
+                    for i in range(8):
                         thebit = (((ord(thebyte) << i) & 0x80) >> 7)
                         bits.append(thebit)
             else:
@@ -35,7 +35,7 @@ def read_binary_file(filename):
 filename = sys.argv[1]
 bits = read_binary_file(filename)
 
-print "#n    lag-n"
-for i in xrange(16):
-    print "%d  %0.5f" % (i, binary_lagn(bits,i))
+print("#n    lag-n")
+for i in range(16):
+    print("%d  %0.5f" % (i, binary_lagn(bits,i)))
     

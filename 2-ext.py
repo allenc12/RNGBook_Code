@@ -6,7 +6,7 @@ import math
 from mpmath import *
 
 if len(sys.argv) < 2:
-    print "Usage: program min_entropy_per_bit size_of_matrix_side"
+    print("Usage: program min_entropy_per_bit size_of_matrix_side")
     exit()
 
 per_bit_min_entropy = float(sys.argv[1])     # Input entropy
@@ -32,9 +32,9 @@ def ext_k_from_bias(bx,by,l,bias):
     
 #print "k,logbias"
 
-for k in xrange(1,257):
+for k in range(1,257):
     bias = blender_bias_from_k(bx,by,l,k)
     logbias = log(bias,mpf('2.0'))
-    print k," ",nstr(logbias,6)
+    print(k," ",nstr(logbias,6))
 
 

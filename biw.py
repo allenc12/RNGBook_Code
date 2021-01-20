@@ -7,7 +7,7 @@ def gmul(a, b):
         r = b
     else:
         r = 0
-    for i in xrange(1,degree+1):
+    for i in range(1,degree+1):
         if  (b & (1 << (degree-1))) == 0:
             b = z ^ ((b << 1) & ((1 << degree) - 1))
         else:

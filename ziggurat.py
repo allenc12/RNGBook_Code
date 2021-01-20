@@ -7,9 +7,9 @@ import math
 rand = random.SystemRandom() # nondeterministic random source
 num = int(sys.argv[1])  # Number of random numbers
 
-kn=[0 for x in xrange(128)] # The three lookup tables
-wn=[0 for x in xrange(128)]
-fn=[0 for x in xrange(128)]
+kn=[0 for x in range(128)] # The three lookup tables
+wn=[0 for x in range(128)]
+fn=[0 for x in range(128)]
 
 def ziggurat_normal():
     global kn
@@ -67,7 +67,7 @@ def build_tables():
     fn[0]=1.0
     fn[127]=math.exp(-.5*dn*dn)
     
-    for i in xrange(126,0,-1):
+    for i in range(126,0,-1):
         dn=math.sqrt(-2.*math.log(vn/dn+math.exp(-.5*dn*dn)));
         kn[i+1]=int((dn/tn)*m1);
         tn=dn;
@@ -75,6 +75,6 @@ def build_tables():
         wn[i]=dn/m1;
 
 build_tables()
-for i in xrange(num):
-    print ziggurat_normal()
+for i in range(num):
+    print(ziggurat_normal())
 

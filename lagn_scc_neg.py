@@ -8,7 +8,7 @@ def lagn_scc(scc,n):
     lagns.append(1.0) 
     lag1prob = (scc/2.0)+0.5
     
-    for i in xrange(1,n):
+    for i in range(1,n):
         prob = (lag1prob * probs[i-1]) + ((1-lag1prob)*(1-probs[i-1])) 
         probs.append(prob)
         # convert from probability to correlation coef  
@@ -16,8 +16,8 @@ def lagn_scc(scc,n):
         
     return lagns, probs
 
-print "#n  lagn_cc     bias"
+print("#n  lagn_cc     bias")
 lagns,probs = lagn_scc(scc=-0.7,n=16)
-for i in xrange(len(lagns)):
-    print "%02d  %1.8f  %1.8f" % (i,lagns[i],probs[i])
+for i in range(len(lagns)):
+    print("%02d  %1.8f  %1.8f" % (i,lagns[i],probs[i]))
     

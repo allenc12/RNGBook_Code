@@ -8,7 +8,7 @@ def binary_lagn(bits,n):
     t2 = 0.0
     count = len(bits)
 
-    for i in xrange(count):
+    for i in range(count):
         if (bits[(i+n) % count]==1) and (bits[i]==1):
             t1 += 1.0
         if (bits[i]==1):
@@ -27,7 +27,7 @@ def read_binary_file(filename):
             block = thefile.read(4096)
             if block:
                 for thebyte in block:
-                    for i in xrange(8):
+                    for i in range(8):
                         thebit = (((ord(thebyte) << i) & 0x80) >> 7)
                         bits.append(thebit)
             else:
@@ -41,20 +41,20 @@ bits = read_binary_file(filename)
 
 bits = bits[0:(len(bits)-(len(bits) % reverse_len))] # trim to a multiple of the bit reverse size
 
-print "#n    lag-n"
+print("#n    lag-n")
 
 # Reverse the bits 
 block_count = len(bits)/reverse_len
 
 reversed_bits = list()
 
-for block in xrange(block_count):
+for block in range(block_count):
     sublist = bits[block * reverse_len:(block+1)*reverse_len] # grab reverse_len bits
     outlist = list()
     for bit in sublist: # reverse them
         outlist.insert(0,bit)
     reversed_bits = reversed_bits+outlist # add them to the output 
     
-for i in xrange(32):
-    print "%d  %0.5f" % (i,(binary_lagn(reversed_bits,i)))
+for i in range(32):
+    print("%d  %0.5f" % (i,(binary_lagn(reversed_bits,i))))
     

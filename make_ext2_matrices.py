@@ -14,7 +14,7 @@ A.append(gf.make_identity_matrix(size=degree))
 
 # Compute basis element list x_i  
 basis = gf.moarrrr_power_to_the_alpha(element, degree=degree, length=seedlength)
-print "Basis x_i = ", ["0x%x" % x for x in basis[:seedlength]]
+print("Basis x_i = ", ["0x%x" % x for x in basis[:seedlength]])
 for x in range(1,seedlength):
     # compute A_{i+1}
     matrix = copy.deepcopy(A[x-1]) # copy A_{x-1}
@@ -25,13 +25,13 @@ for x in range(1,seedlength):
     columnv = gf.element2column(element,size=degree)
 
     # XOR the column vector into the left column of the matrix
-    for y in xrange(degree):
+    for y in range(degree):
         matrix[y][0] = matrix[y][0] ^ columnv[y][0]
 
     # Add the resulting matrix to the list
     A.append(copy.deepcopy(matrix)) 
 
 for i,x in enumerate(A):
-    print "matrix A_%d" % (i+1)
-    print gf.matrix2str_binary_2d(x)
+    print("matrix A_%d" % (i+1))
+    print(gf.matrix2str_binary_2d(x))
 

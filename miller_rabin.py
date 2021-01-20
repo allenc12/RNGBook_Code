@@ -20,13 +20,13 @@ def is_probably_prime(n,k):
         d = d >> 1
         r = r + 1
     # k is the chosen iteration count
-    for i in xrange(k):
+    for i in range(k):
         a = rand.randint(2,n-2)
         x = pow(a,d,n)
         if (x==1) or (x == (n-1)):
             continue
             
-        for j in xrange(r-1):
+        for j in range(r-1):
             x = pow(x,2,n)
             if x == 1:
                 return False
@@ -37,7 +37,7 @@ def is_probably_prime(n,k):
         return False
     return True
 
-#for i in xrange(1,100):
+#for i in range(1,100):
 #    if is_probably_prime(i,10):
 #        print "%d  Prime" % i
 #    else:
@@ -55,7 +55,7 @@ def find_prime(bits):
     return n
 
 if __name__ == "__main__":
-    for i in xrange(4):
+    for i in range(4):
         x = find_prime(1024)
-        print "Prime %X" % x
+        print("Prime %X" % x)
     

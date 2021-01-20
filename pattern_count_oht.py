@@ -10,7 +10,7 @@ def oht(bitlist):
     bitlist259 = previous + bitlist
     previous = bitlist[253:]
     counts = [0,0,0,0,0,0]
-    for i in xrange(256):
+    for i in range(256):
         if bitlist259[i+3] == 1:
             counts[0] += 1
         if bitlist259[i+2:i+4] == [0,1]:
@@ -54,6 +54,6 @@ with open(filename,"rb") as f:
         bytes = f.read(32)
 f.close()
 
-print "Passing Blocks: ",passfail[0]
-print "Failing Blocks: ",passfail[1]
-print "Fail Percentage = ",(passfail[1])/(passfail[0]+passfail[1])*100.0,"%"
+print("Passing Blocks: ",passfail[0])
+print("Failing Blocks: ",passfail[1])
+print("Fail Percentage = ",(passfail[1])/(passfail[0]+passfail[1])*100.0,"%")

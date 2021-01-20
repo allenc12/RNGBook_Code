@@ -8,6 +8,6 @@ for ch in bits:
     thing.append(ch)
     
 that = ','.join(thing)
-print that
+print(that)
 
     

@@ -18,13 +18,13 @@ def bias_min_entropy(n,b):
     me = -math.log(p,2)
     return me
 
-print "# bias min-entropy"
+print("# bias min-entropy")
 
-for count in xrange(21):
+for count in range(21):
     bias = 0.05 * count
 
     me = bias_min_entropy(100,bias)/100
 
-    print "%1.2f  %f" % (bias,me)
+    print("%1.2f  %f" % (bias,me))
 
 

@@ -12,7 +12,7 @@ def scc256(bitlist):
     previous = bitlist[255:]
     count1 = 0
     counts = [0,0,0,0]
-    for i in xrange(256):
+    for i in range(256):
         if bitlist[i] == 1:
             count1 += 1
 
@@ -57,13 +57,13 @@ def gen_scc_data(scc):
             prev = bit
         yield bits
 
-print "scc, measured_scc"
+print("scc, measured_scc")
 
 for sccint in range(41):
     scc = -1.0 + (sccint * 0.05)
     for bitlist in gen_scc_data(scc):
         (count1,counts) = scc256(bitlist)
         (mean,measured_scc) = compute_mean_scc(count1,counts)
-        print scc,",",measured_scc
+        print(scc,",",measured_scc)
 
     

@@ -16,7 +16,7 @@ def scc_blocksize(bitlist,blocksize):
     previous = bitlist[blocksize-1:]
     count1 = 0
     counts = [0,0,0,0]
-    for i in xrange(blocksize):
+    for i in range(blocksize):
         if bitlist[i] == 1:
             count1 += 1
 
@@ -61,13 +61,13 @@ def gen_scc_data(scc):
             prev = bit
         yield bits
 
-print "scc, measured_scc"
+print("scc, measured_scc")
 
 for sccint in range(41):
     scc = -1.0 + (sccint * 0.05)
     for bitlist in gen_scc_data(scc):
         (count1,counts) = scc_blocksize(bitlist,blocksize)
         (mean,measured_scc) = compute_mean_scc(count1,counts)
-        print scc,",",measured_scc
+        print(scc,",",measured_scc)
 
     

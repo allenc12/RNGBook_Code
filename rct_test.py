@@ -13,11 +13,11 @@ def read_binary_file(symbol_size,filename):
             block = thefile.read(4096)
             if block:
                 for thebyte in block:
-                    for i in xrange(8):
+                    for i in range(8):
                         thebit = (((ord(thebyte) << i) & 0x80) >> 7)
                         bits.append(thebit)
                 symbolcount = int(math.floor(len(bits)/symbol_size))
-                for symbolnum in xrange(symbolcount):
+                for symbolnum in range(symbolcount):
                     symbolbits = bits[symbolnum*symbol_size:(symbolnum+1)*symbol_size]
                     symbol = 0
                     for bit in symbolbits:
@@ -37,16 +37,16 @@ filename = str(sys.argv[4])
 
 f = read_binary_file(symbol_size,filename)
 
-A = f.next()
+A = next(f)
 B = 1
 errors = 0
 maxcount = 10**7
 
 C = int(math.ceil((W/H) + 1.0))
-print "W =",W
-print "H =",H
-print "Symbol Size =",symbol_size 
-print "C =",C
+print("W =",W)
+print("H =",H)
+print("Symbol Size =",symbol_size) 
+print("C =",C)
 
 count = 0
 for X in f:
@@ -60,6 +60,6 @@ for X in f:
         B = 1
     A = X
 
-print "Errors %d  Count = %d rate = %f as_a_power_of_2 = %f  " % \
-  (errors,count, (count/errors), math.log((count/errors),2))
+print("Errors %d  Count = %d rate = %f as_a_power_of_2 = %f  " % \
+  (errors,count, (count/errors), math.log((count/errors),2)))
 

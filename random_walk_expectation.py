@@ -11,6 +11,6 @@ def expected_dist(N,d):
     return e
 
 N = 1000
-for d in xrange(1,11):
-    print "%d steps, %dD, expectation = %f" % (N,d,expected_dist(N,d))
+for d in range(1,11):
+    print("%d steps, %dD, expectation = %f" % (N,d,expected_dist(N,d)))
 

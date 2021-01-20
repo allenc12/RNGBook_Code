@@ -15,7 +15,7 @@ from binomial_quantile import *
 n = 32
 p = 0.6
 
-xs = range(n+1)
+xs = list(range(n+1))
 ys = [BCDF(n,x,p) for x in xs]
 
 plt.plot(xs,ys,"o")
